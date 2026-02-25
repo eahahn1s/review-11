@@ -63,19 +63,19 @@ for (var i = 0; i < puzzleButtons.length; i++) {
 
 setupPuzzle();
 
-document.getElementById("Check").addEventListener("click",
-function() {
-   for (var i = 0; i < puzzleCells.length; i++) {
-      puzzleCells[i].style.backgroundColor = "";
+document.getElementById("Check").addEventListener ("click",
+function findErrors() {
+   for (var i = 0; i < allCells.length; i++) {
+      allCells[i].style.backgroundColor = "";
    }
 }
 
 );
 
 document.getElementById("Show").addEventListener ("click",
-function() {
-   for (var i = 0; i < puzzleCells.length; i++) {
-      puzzleCells[i].style.backgroundColor = "";
+function showSolution() {
+   for (var i = 0; i < allCells.length; i++) {
+      allCells[i].style.backgroundColor = "";
    }
 }
 
@@ -91,14 +91,14 @@ function switchPuzzle(e) {
    switch (puzzleID) {
       case "puzzle1":
          document.getElementById("puzzle").innerHTML = 
-         drawPuzzle(hitori1Numbers, hitori1Rating, hitori1Rating);
+         drawHitori(hitori1Numbers, hitori1Rating, hitori1Rating);
          break;
-      case puzzle2: document.getElementById("puzzle").innerHTML = 
-      drawPuzzle(hitori1Numbers, hitori1Rating, hitori1Rating);
+      case "puzzle2": document.getElementById("puzzle").innerHTML = 
+      drawHitori(hitori1Numbers, hitori1Rating, hitori1Rating);
       break;
    case "puzzle3":
       document.getElementById("puzzle").innerHTML = 
-      drawPuzzle(hitori1Numbers, hitori1Rating, hitori1Rating);
+      drawHitori(hitori1Numbers, hitori1Rating, hitori1Rating);
       break;
    }
 
@@ -107,10 +107,24 @@ function switchPuzzle(e) {
 }
 
 function setupPuzzle() {
+   allCells = document.querySelectorAll("table#hitoriGrid td");
+   for (var i = 0; i < allCells.length; i++) {
+      allCells[i].style.backgroundColor = "rgb(white)";
 
+      allCells[i].onmousedown = setbackground;
+}
 }
 
+function setbackground(e) {
+var cursorType;
 
+   if (e.shiftKey) {
+      cellBackground = "rgb(white)";
+      cellFont = "rgb(black)";
+      cellBorderRadius = "0";
+      cursorType = "url(jpf_eraser.png), alias";
+}
+}
 
 
 
