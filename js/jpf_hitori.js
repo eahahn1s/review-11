@@ -56,15 +56,15 @@ document.getElementById("puzzle").innerHTML = drawHitori(hitori1Numbers, hitori1
 
     let puzzleButtons = document.getElementsByClassName("puzzles");
 
-    // Detect when the user changes the puzzle
+    
     for (let puzzleButton of puzzleButtons) {
         puzzleButton.addEventListener('click', switchPuzzle);
     }
 
-    // Puzzle logic
+    
     setupPuzzle();
 
-    // Detect if the user wants to check or show the solution
+    
     document.getElementById("check").addEventListener('click', findErrors);
     document.getElementById("solve").addEventListener('click', showSolution);
 }
@@ -129,7 +129,7 @@ function setupPuzzle() {
             e.preventDefault();
         })
 
-        // Change the cursor based on which key is being pressed
+        
         cell.addEventListener('mouseover', (e) => {
             if (e.shiftKey) {
                 cell.style.cursor = 'url(../images/jpf_eraser.png), alias';
@@ -141,21 +141,21 @@ function setupPuzzle() {
             }
         })
 
-        // Check if the puzzle is correct after user input
+        
         cell.addEventListener('mouseup', checkSolution);
     })
 }
 
 function findErrors() {
     allCells.forEach((cell) => {
-        // If the cell is a circle when it's supposed to be a block or is a block when it's supposed to be a circle
+        
         if ((cell.className === 'blocks' && cell.style.backgroundColor === 'rgb(101, 101, 101)') || (cell.className === 'circles' && cell.style.backgroundColor === 'black')) {
-            // Change the font color to red
+           
             cell.style.color = 'red';
         }
     })
 
-    // After 1 second, change the font color back to white
+    
     setTimeout(() => {
         allCells.forEach((cell) => {
             if (cell.style.color === 'red') cell.style.color = 'white';
