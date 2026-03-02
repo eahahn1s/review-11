@@ -132,12 +132,12 @@ function setupPuzzle() {
         
         cell.addEventListener('mouseover', (e) => {
             if (e.shiftKey) {
-                cell.style.cursor = 'url(../images/jpf_eraser.png), alias';
+                cell.style.cursor = 'url(./img/jpf_eraser.png), alias';
             } else if (e.altKey) {
-                cell.style.cursor = 'url(../images/jpf_block.png), cell';
+                cell.style.cursor = 'url(./img/jpf_block.png), cell';
 
             } else {
-                cell.style.cursor = 'url(../images/jpf_circle.png), pointer';
+                cell.style.cursor = 'url(./img/jpf_circle.png), pointer';
             }
         })
 
